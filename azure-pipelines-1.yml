@@ -1,0 +1,13 @@
+trigger:
+ batch: true
+ branches:
+   include:
+   - main
+   exclude:
+   - dev
+ paths:
+   include:
+     - '*'
+   exclude:
+     - docs
+pr: none

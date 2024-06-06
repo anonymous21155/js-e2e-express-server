@@ -7,7 +7,7 @@ trigger:
    - dev
  paths:
    include:
-     - '*'
+   - '*'
    exclude:
-     - docs
+   - docs
 pr: none

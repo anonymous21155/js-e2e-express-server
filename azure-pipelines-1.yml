@@ -1,5 +1,6 @@
-trigger:
- batch: true
+trigger: none
+ 
+pr: 
  branches:
    include:
    - main
@@ -10,4 +11,5 @@ trigger:
    - '*'
    exclude:
    - docs
-pr: none
+ autoCancel: false
+ drafts: false

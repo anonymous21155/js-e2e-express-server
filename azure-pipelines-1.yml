@@ -1,3 +1,5 @@
+stages:
+- stage: A
 trigger: none
  
 pr: 

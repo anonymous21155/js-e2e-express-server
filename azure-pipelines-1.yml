@@ -15,3 +15,12 @@ pr:
    - docs
  autoCancel: false
  drafts: false
+
+schedules:
+- cron: 30 12 * Mar-Sep Mon,Wed,Fri
+  branches: 
+    include:
+      - '*'
+  always: false
+  batch: true
+    

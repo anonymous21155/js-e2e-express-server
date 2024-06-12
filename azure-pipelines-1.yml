@@ -22,7 +22,7 @@ schedules:
     include:
       - '*'
   always: false
-  batch: 
+  batch: true
 
 resources:
  pipelines:

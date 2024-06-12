@@ -22,5 +22,11 @@ schedules:
     include:
       - '*'
   always: false
-  batch: true
+  batch: 
+
+resources:
+ pipelines:
+ - pipeline: 
+   source: 
+   trigger:
     

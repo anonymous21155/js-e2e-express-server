@@ -1,6 +1,7 @@
 stages:
 - stage: A
-
+  pool: 
+    vmImage: 'windows-latest'
 trigger: none
  
 pr: 

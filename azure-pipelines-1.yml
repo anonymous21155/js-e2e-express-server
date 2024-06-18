@@ -1,7 +1,4 @@
-stages:
-- stage: A
-  pool: 
-    vmImage: 'windows-latest'
+
 trigger: none
  
 pr: 
@@ -30,5 +27,18 @@ resources:
  pipelines:
  - pipeline: dependantpipeline
    source: anonymous21155.mslearn-tailspin-spacegame-web
-   trigger: true
-    
+   trigger: true  
+
+stages:
+- stage: A
+# pool: sever (forserverless job)
+  pool: 
+    vmImage: 'windows-latest'
+  jobs:
+  - job: A1
+    displayName: Install Dependencies
+    continueOnError: false
+#   container: mcr.microsoft.com/windows/servercore:ltsc2019
+  - job: A2
+    displayName: Build the app
+    dependsOn: A1

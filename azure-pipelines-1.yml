@@ -34,10 +34,24 @@ stages:
 # pool: sever (forserverless job)
   pool: 
     vmImage: 'windows-latest'
+#   name: privateAgentName
+#   demands: yourCondition    
   jobs:
   - job: A1
     displayName: Install Dependencies
     continueOnError: false
+    strategy:
+      maxParallel: 2
+      matrix: 
+        node_14x: 
+          nodeVersion: 14.x
+        node_16x:
+          nodeVersion: 16.x
+    timeoutInMinutes: 4
+    cancelTimeoutInMinutes: 2
+#    workspace:
+#      clean: resources (Build.SourcesDirectory) | outputs (Build.BinariesDirectory) | all (Pipeline.Workspace)
+
 #   container: mcr.microsoft.com/windows/servercore:ltsc2019
   - job: A2
     displayName: Build the app

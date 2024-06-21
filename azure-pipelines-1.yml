@@ -35,9 +35,13 @@ stages:
   pool: 
     vmImage: 'windows-latest'
 #   name: privateAgentName
-#   demands: yourCondition    
+#   demands: yourCondition  
+    
   jobs:
   - job: A1
+#    container: 'public docker image'
+#      image: "ACR -IMAGE name"
+ #     endpoint: 'sercie connection name'
     displayName: Install Dependencies
     continueOnError: false
     strategy:

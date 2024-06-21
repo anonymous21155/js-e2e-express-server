@@ -59,3 +59,10 @@ stages:
   - job: A2
     displayName: Build the app
     dependsOn: A1
+    condition: or(succeeded('A2'), and(eq(variables['build.sourceBranch'], 'refs/heads/main'), ne(variables['build.sourceBranch'], 'refs/heads/releases')))
+
+  - job: A3
+    displayName: Backup Job
+#   dependsOn: [] (causes to run in parallel)
+    condition: failed()
+

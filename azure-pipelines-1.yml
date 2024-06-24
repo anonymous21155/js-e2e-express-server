@@ -44,6 +44,7 @@ stages:
     displayName: Install Dependencies
     continueOnError: false
     strategy:
+#     parallel: 3 #System.TotalJobsInPhase indicates the total number of slices System.JobPositionInPhase identifies a particular slice
       maxParallel: 2
       matrix: 
         node_14x: 

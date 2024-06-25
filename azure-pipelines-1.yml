@@ -56,7 +56,7 @@ stages:
     steps:
     - script: |
         npm install
-        npm build
+        npm run build
 #    workspace:
 #      clean: resources (Build.SourcesDirectory) | outputs (Build.BinariesDirectory) | all (Pipeline.Workspace)
 

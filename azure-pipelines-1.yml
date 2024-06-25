@@ -53,6 +53,10 @@ stages:
           nodeVersion: 16.x
     timeoutInMinutes: 4
     cancelTimeoutInMinutes: 2
+    steps:
+    - script: |
+        npm install
+        npm build
 #    workspace:
 #      clean: resources (Build.SourcesDirectory) | outputs (Build.BinariesDirectory) | all (Pipeline.Workspace)
 

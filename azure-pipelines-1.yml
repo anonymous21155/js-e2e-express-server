@@ -59,13 +59,13 @@ stages:
         npm run build
       enabled: true
       retryCountOnTaskFailure: 2
-    - pwsh: ./script.psl # for PowerShell Core
+    - pwsh: ./script.ps1 # for PowerShell Core
       failOnStderr: true 
     - powershell: .\script.ps1 # for Windows PowerShell
     - bash: |
         echo hello
         which bash
-
+    - template: /templates/azure-pipelines-1.yml
 #    workspace:
 #      clean: resources (Build.SourcesDirectory) | outputs (Build.BinariesDirectory) | all (Pipeline.Workspace)
 

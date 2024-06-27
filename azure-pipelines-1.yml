@@ -28,10 +28,10 @@ resources:
  - pipeline: dependantpipeline
    source: anonymous21155.mslearn-tailspin-spacegame-web
    trigger: true  
-#repositories:
+#repositories:  # for refernce template file from another repo
 #- repository: templates
 #  type: github
-#  name: <org name/repo name>
+#  name: <org name/github repo name> or <project name/azure repo name>
 #  endpoint: service connection name
 stages:
 - stage: A

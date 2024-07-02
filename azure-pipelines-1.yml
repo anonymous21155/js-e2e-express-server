@@ -84,5 +84,31 @@ stages:
 #   dependsOn: [] (causes to run in parallel)
     condition: failed()
 # - template: common.yml@templates #reference from another repo
+  - deployment: 
+    environment: 
+      name: 'prod'
+      resourceType: VirtualMachine
+#     resourceId: 123
+#     resourceName: MyVM
+#     tags: prod
+    strategy: 
+#     canary:
+#       increments: [10, 25]
+#     rolling:        #supports only vm
+#       maxParallel: 5 or 50%
+      runOnce:
+        preDeploy:
+          steps:
+          - script: echo iam going to deploy
+        deploy:
+          steps: 
+          - script: echo hello world
+        on: 
+          success:
+             steps:
+             - script: echo yeh i deployed
+          failure:
+            steps:
+            - script: echo oh no!
     
 

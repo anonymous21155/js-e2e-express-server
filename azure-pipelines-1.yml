@@ -1,4 +1,30 @@
-
+parameters:
+- name: test
+  type: number
+  default: 1
+  values: 
+  - 1
+  - 2
+- name: obj
+  type: object
+  default: 
+    foo: 'FOO'
+    bar: 'BAR'
+    things:
+    - one
+    - two
+    - three
+    nested:
+      one: apple
+      two: pear
+      count: 3 
+- name: listOfFruits
+  type: object
+  default:
+  - fruitName: 'apple'
+    colors: ['red','green']
+  - fruitName: 'lemon'
+    colors: ['yellow']
 trigger: none
  
 pr: 
@@ -78,7 +104,10 @@ stages:
     displayName: Build the app
     dependsOn: A1
     condition: or(succeeded('A2'), and(eq(variables['build.sourceBranch'], 'refs/heads/main'), ne(variables['build.sourceBranch'], 'refs/heads/releases')))
-
+    steps:
+    - ${{ each fruit in parameters.listOfFruits }} :
+      - ${{ each fruitColor in fruit.colors}} :
+        - script: echo ${{ fruit.fruitName}} ${{ fruitColor }}
   - job: A3
     displayName: Backup Job
 #   dependsOn: [] (causes to run in parallel)
@@ -90,7 +119,7 @@ stages:
       resourceType: VirtualMachine
 #     resourceId: 123
 #     resourceName: MyVM
-#     tags: prod
+#     tags: prod, windows
     strategy: 
 #     canary:
 #       increments: [10, 25]

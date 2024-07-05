@@ -113,6 +113,8 @@ stages:
 #   dependsOn: [] (causes to run in parallel)
     condition: failed()
 # - template: common.yml@templates #reference from another repo
+#   parameters:
+#     parameterName: value   #pass parameter value to parameter defined in template
   - deployment: 
     environment: 
       name: 'prod'

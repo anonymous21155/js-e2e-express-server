@@ -41,13 +41,13 @@ pr:
  autoCancel: false
  drafts: false
 
-schedules:
-- cron: 30 12 * Mar-Sep Mon,Wed,Fri
-  branches: 
-    include:
-      - '*'
-  always: false
-  batch: true
+#schedules:
+#- cron: 30 12 * Mar-Sep Mon,Wed,Fri
+#  branches: 
+#   include:
+#      - '*'
+#  always: false
+#  batch: true
 
 resources:
  pipelines:
@@ -112,8 +112,17 @@ stages:
     displayName: Backup Job
 #   dependsOn: [] (causes to run in parallel)
     condition: failed()
+    steps:
+    - task: PublishTestResults@2
+      inputs:
+        searchFolder: string
+      retryCountOnTaskFailure: 1
+      enabled: false
+      env:
+        value: value
+      timeoutInMinutes: 5
 # - template: common.yml@templates #reference from another repo
-#   parameters:
+#   parameters: 
 #     parameterName: value   #pass parameter value to parameter defined in template
   - deployment: 
     environment: 
